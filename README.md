@@ -1,46 +1,112 @@
-# Getting Started with Create React App
+# Bus Management System - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bus management system built with React 18 + TypeScript for the CIVA technical challenge.
+
+## Features
+
+- ✅ React 18 with TypeScript
+- ✅ JWT Authentication
+- ✅ State management with useState and useEffect
+- ✅ Bus table with pagination
+- ✅ Detailed modal for each bus
+- ✅ Reusable components
+- ✅ Clean and scalable architecture
+- ✅ Robust error handling
+
+## Technologies Used
+
+- **Frontend**: React 18, TypeScript, React Router DOM
+- **HTTP Client**: Axios
+- **Styling**: Custom CSS3
+- **Architecture**: Clean Architecture + Custom Hooks
+
+## Installation and Usage
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm
+- Backend running on `http://localhost:8080`
+
+### Installation
+```bash
+git clone [your-repository]
+cd bus-frontend
+npm install
+```
+
+### Environment Variables
+Create `.env` file in the root:
+```
+REACT_APP_API_BASE_URL=http://localhost:8080/api/v1
+```
+
+### Run in Development
+```bash
+npm start
+```
+
+The application will be available at `http://localhost:3000`
+
+### Production Build
+```bash
+npm run build
+```
+
+## Test Credentials
+
+- **Username**: admin
+- **Password**: admin123
+
+## Functionalities
+
+### Dashboard
+- Real-time fleet statistics
+- Active/inactive bus counters
+- Quick navigation to bus management
+
+### Bus Management
+- Paginated list of all buses
+- Filtering and search
+- Detailed modal with complete information
+- Visual states (active/inactive)
+
+### Authentication
+- JWT login
+- Route protection
+- Automatic logout on token expiration
+
+## Frontend Architecture
+
+```
+src/
+├── components/
+│   ├── ui/                 # Reusable components
+│   ├── features/           # Feature-specific components
+│   └── layout/            # Application layout
+├── hooks/                 # Custom hooks
+├── services/              # API services
+├── types/                 # TypeScript definitions
+├── pages/                 # Main pages
+└── utils/                 # Utilities
+```
+
+## Consumed API Endpoints
+
+- `POST /auth/login` - Authentication
+- `GET /bus` - Bus list (paginated)
+- `GET /bus/{id}` - Specific bus details
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm start` - Development server
+- `npm test` - Run tests
+- `npm run build` - Production build
+- `npm run lint` - Code analysis
 
-### `npm start`
+## Developed by
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Angel Antonio Cancho Corilla for the CIVA technical challenge
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project demonstrates a complete implementation of modern frontend with React 18, TypeScript, JWT authentication, and clean architecture following development best practices.
