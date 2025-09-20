@@ -15,6 +15,7 @@ export const BusTable: React.FC<BusTableProps> = ({ onBusSelect }) => {
     const { openModal } = useModal();
 
     useEffect(() => {
+        fetchBuses({ page: 0, size: 10 });
     }, [fetchBuses]);
 
     const handlePageChange = (page: number) => {
@@ -29,57 +30,54 @@ export const BusTable: React.FC<BusTableProps> = ({ onBusSelect }) => {
         }
     };
 
-    const formatDate = (dateString: string): string => {
-        return new Date(dateString).toLocaleDateString('es-PE');
-    };
-
     const columns: TableColumn<Bus>[] = [
         {
             key: 'busNumber',
-            header: 'Número de Bus',
+            header: 'Bus Number',
             width: '120px',
         },
         {
             key: 'licensePlate',
-            header: 'Placa',
+            header: 'License Plate',
             width: '100px',
         },
         {
             key: 'busBrand',
-            header: 'Marca',
+            header: 'Brand',
             width: '120px',
             render: (busBrand) => busBrand.name,
         },
         {
             key: 'features',
-            header: 'Características',
+            header: 'Features',
             render: (features) => (
                 <span title={features}>
-        {features.length > 50
-            ? `${features.substring(0, 50)}...`
-            : features
-        }
-      </span>
+                {features.length > 50
+                    ? `${features.substring(0, 50)}...`
+                    : features
+                }
+            </span>
             ),
         },
         {
             key: 'active',
-            header: 'Estado',
+            header: 'Status',
             width: '100px',
             render: (active) => (
                 <span className={`bus-status ${active ? 'bus-active' : 'bus-inactive'}`}>
-        {active ? 'Activo' : 'Inactivo'}
-      </span>
+                {active ? 'Active' : 'Inactive'}
+            </span>
             ),
         },
     ];
 
+
     if (error) {
         return (
             <div className="bus-table-error">
-                <p>Error al cargar los buses: {error}</p>
+                <p>Error loading buses: {error}</p>
                 <Button onClick={() => fetchBuses()}>
-                    Reintentar
+                    Retry
                 </Button>
             </div>
         );
@@ -88,10 +86,10 @@ export const BusTable: React.FC<BusTableProps> = ({ onBusSelect }) => {
     return (
         <div className="bus-table-container">
             <div className="bus-table-header">
-                <h2>Lista de Buses</h2>
+                <h2>Bus List</h2>
                 <div className="bus-table-actions">
                     <Button onClick={() => fetchBuses()}>
-                        Actualizar
+                        Refresh
                     </Button>
                 </div>
             </div>
