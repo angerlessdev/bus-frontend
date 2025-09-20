@@ -1,0 +1,21 @@
+.buses-page {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.buses-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.buses-header h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.buses-header p {
+    color: #6c757d;
+    font-size: 1rem;
+    margin: 0;
+}

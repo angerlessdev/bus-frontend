@@ -1,0 +1,95 @@
+.bus-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.bus-modal-section {
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 20px;
+}
+
+.bus-modal-section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.bus-modal-section h3 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.bus-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.bus-modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bus-modal-field label {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.bus-modal-field span {
+    color: #333;
+    font-size: 1rem;
+}
+
+.bus-modal-characteristics {
+    background-color: #f8f9fa;
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.bus-modal-characteristics p {
+    margin: 0;
+    line-height: 1.5;
+    color: #333;
+}
+
+.bus-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.bus-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.bus-active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.bus-inactive {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+@media (max-width: 768px) {
+    .bus-modal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bus-modal-actions {
+        justify-content: stretch;
+    }
+}
