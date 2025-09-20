@@ -58,12 +58,11 @@ export const useBuses = (): UseBusesReturn => {
 
         try {
             await busService.createBus(busData);
-            // Recargar la lista de buses después de crear
             await fetchBuses();
         } catch (err) {
             const apiError = err as ApiError;
             setError(apiError.message || 'Error al crear el bus');
-            throw err; // Re-throw para manejo en componentes
+            throw err;
         } finally {
             setIsLoading(false);
         }
