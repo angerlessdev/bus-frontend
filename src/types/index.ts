@@ -21,6 +21,13 @@ export interface AuthState {
     error: string | null;
 }
 
+export interface DashboardStats {
+    totalBuses: number;
+    activeBuses: number;
+    inactiveBuses: number;
+    brands: number;
+}
+
 export interface BusBrand {
     id: number;
     name: string;
