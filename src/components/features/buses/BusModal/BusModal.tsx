@@ -21,46 +21,46 @@ export const BusModal: React.FC<BusModalProps> = ({
         <Modal
             isOpen={isOpen}
             onClose={onClose}
-            title="Detalles del Bus"
+            title="Bus Details"
             size="md"
         >
             <div className="bus-modal-content">
                 <div className="bus-modal-section">
-                    <h3>Información General</h3>
+                    <h3>General Information</h3>
                     <div className="bus-modal-grid">
                         <div className="bus-modal-field">
                             <label>ID:</label>
                             <span>{bus.id}</span>
                         </div>
                         <div className="bus-modal-field">
-                            <label>Número de Bus:</label>
+                            <label>Bus Number:</label>
                             <span>{bus.busNumber}</span>
                         </div>
                         <div className="bus-modal-field">
-                            <label>Placa:</label>
+                            <label>License Plate:</label>
                             <span>{bus.licensePlate}</span>
                         </div>
                         <div className="bus-modal-field">
-                            <label>Estado:</label>
+                            <label>Status:</label>
                             <span className={`bus-status ${bus.active ? 'bus-active' : 'bus-inactive'}`}>
-                {bus.active ? 'Activo' : 'Inactivo'}
-              </span>
+                                {bus.active ? 'Active' : 'Inactive'}
+                            </span>
                         </div>
                     </div>
                 </div>
 
                 <div className="bus-modal-section">
-                    <h3>Marca</h3>
+                    <h3>Brand</h3>
                     <div className="bus-modal-grid">
                         <div className="bus-modal-field">
-                            <label>Nombre:</label>
+                            <label>Name:</label>
                             <span>{bus.busBrand.name}</span>
                         </div>
                     </div>
                 </div>
 
                 <div className="bus-modal-section">
-                    <h3>Características</h3>
+                    <h3>Features</h3>
                     <div className="bus-modal-characteristics">
                         <p>{bus.features}</p>
                     </div>
@@ -68,7 +68,7 @@ export const BusModal: React.FC<BusModalProps> = ({
 
                 <div className="bus-modal-actions">
                     <Button onClick={onClose} variant="secondary">
-                        Cerrar
+                        Close
                     </Button>
                 </div>
             </div>

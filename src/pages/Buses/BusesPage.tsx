@@ -24,8 +24,8 @@ export const BusesPage: React.FC = () => {
         <Layout>
             <div className="buses-page">
                 <div className="buses-header">
-                    <h1>Gestión de Buses</h1>
-                    <p>Administra la flota de buses del sistema</p>
+                    <h1>Bus Management</h1>
+                    <p>Manage the system's bus fleet</p>
                 </div>
 
                 <BusTable onBusSelect={handleBusSelect} />
