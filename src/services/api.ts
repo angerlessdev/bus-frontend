@@ -20,6 +20,7 @@ class ApiClient {
             headers: {
                 'Content-Type': 'application/json',
             },
+            withCredentials: true,
         });
 
         this.client.interceptors.request.use(
@@ -28,6 +29,8 @@ class ApiClient {
                 if (token) {
                     config.headers.Authorization = `Bearer ${token}`;
                 }
+
+                console.log('HTTP Request:', config.method?.toUpperCase(), config.url, 'Headers:', config.headers, 'Params:', config.params || config.data);
                 return config;
             },
             (error) => {
@@ -36,13 +39,17 @@ class ApiClient {
         );
 
         this.client.interceptors.response.use(
-            (response) => response,
+            (response) => {
+                console.log('HTTP Response:', response.status, response.data);
+                return response;
+            },
             (error: AxiosError<ErrorResponse>) => {
                 if (error.response?.status === 401) {
-                    // Token expirado o inválido
+                    console.warn('401 Unauthorized, clearing session');
                     this.clearAuth();
                     window.location.href = '/login';
                 }
+                console.error('Error in response interceptor:', error.response?.data || error.message);
                 return Promise.reject(this.formatError(error));
             }
         );
@@ -50,7 +57,7 @@ class ApiClient {
 
     private formatError(error: AxiosError<ErrorResponse>): ApiError {
         const defaultError: ApiError = {
-            message: 'Ocurrió un error inesperado',
+            message: 'An unexpected error occurred',
             status: 500,
             timestamp: new Date().toISOString(),
         };
@@ -58,7 +65,7 @@ class ApiClient {
         if (error.response) {
             const errorData = error.response.data;
             return {
-                message: errorData?.message || errorData?.error || error.message || 'Error del servidor',
+                message: errorData?.message || errorData?.error || error.message || 'Server error',
                 status: error.response.status,
                 timestamp: errorData?.timestamp || new Date().toISOString(),
                 path: errorData?.path || error.config?.url,
@@ -67,18 +74,19 @@ class ApiClient {
         } else if (error.request) {
             return {
                 ...defaultError,
-                message: 'Error de conexión. Verifique su conexión a internet.',
+                message: 'Connection error. Please check your internet connection.',
                 status: 0,
             };
         } else {
             return {
                 ...defaultError,
-                message: error.message || 'Error en la configuración de la petición',
+                message: error.message || 'Error in request configuration',
             };
         }
     }
 
     private clearAuth(): void {
+        console.log('Clearing token and user from localStorage');
         localStorage.removeItem(STORAGE_KEYS.TOKEN);
         localStorage.removeItem(STORAGE_KEYS.USER);
     }
