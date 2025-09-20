@@ -21,13 +21,13 @@ export const LoginForm: React.FC = () => {
         };
 
         if (!formData.username.trim()) {
-            errors.username = 'El usuario es requerido';
+            errors.username = 'Username is required';
         }
 
         if (!formData.password.trim()) {
-            errors.password = 'La contraseña es requerida';
+            errors.password = 'Password is required';
         } else if (formData.password.length < 3) {
-            errors.password = 'La contraseña debe tener al menos 3 caracteres';
+            errors.password = 'Password must be at least 3 characters';
         }
 
         setFormErrors(errors);
@@ -42,7 +42,6 @@ export const LoginForm: React.FC = () => {
         try {
             await login(formData);
         } catch (err) {
-            // El error ya se maneja en el hook useAuth
         }
     };
 
@@ -50,7 +49,6 @@ export const LoginForm: React.FC = () => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
 
-        // Limpiar error del campo cuando el usuario empiece a escribir
         if (formErrors[name as keyof typeof formErrors]) {
             setFormErrors(prev => ({ ...prev, [name]: '' }));
         }
@@ -61,7 +59,7 @@ export const LoginForm: React.FC = () => {
             <div className="login-form-card">
                 <div className="login-form-header">
                     <h1>Bus Management System</h1>
-                    <p>Inicia sesión para continuar</p>
+                    <p>Log in to continue</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="login-form">
@@ -73,7 +71,7 @@ export const LoginForm: React.FC = () => {
 
                     <div className="form-group">
                         <label htmlFor="username" className="form-label">
-                            Usuario
+                            Username
                         </label>
                         <input
                             type="text"
@@ -82,7 +80,7 @@ export const LoginForm: React.FC = () => {
                             value={formData.username}
                             onChange={handleChange}
                             className={`form-input ${formErrors.username ? 'form-input-error' : ''}`}
-                            placeholder="Ingrese su usuario"
+                            placeholder="Enter your username"
                             disabled={isLoading}
                         />
                         {formErrors.username && (
@@ -92,7 +90,7 @@ export const LoginForm: React.FC = () => {
 
                     <div className="form-group">
                         <label htmlFor="password" className="form-label">
-                            Contraseña
+                            Password
                         </label>
                         <input
                             type="password"
@@ -101,7 +99,7 @@ export const LoginForm: React.FC = () => {
                             value={formData.password}
                             onChange={handleChange}
                             className={`form-input ${formErrors.password ? 'form-input-error' : ''}`}
-                            placeholder="Ingrese su contraseña"
+                            placeholder="Enter your password"
                             disabled={isLoading}
                         />
                         {formErrors.password && (
@@ -116,14 +114,14 @@ export const LoginForm: React.FC = () => {
                         loading={isLoading}
                         className="login-button"
                     >
-                        Iniciar Sesión
+                        Log In
                     </Button>
                 </form>
 
                 <div className="login-demo-info">
-                    <p><strong>Credenciales de prueba:</strong></p>
-                    <p>Usuario: admin</p>
-                    <p>Contraseña: admin123</p>
+                    <p><strong>Demo credentials:</strong></p>
+                    <p>Username: admin</p>
+                    <p>Password: admin123</p>
                 </div>
             </div>
         </div>

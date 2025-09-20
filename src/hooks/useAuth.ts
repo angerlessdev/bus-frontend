@@ -6,14 +6,15 @@ import {
     ApiError
 } from '../types';
 import { authService } from '../services';
+import {useNavigate} from "react-router-dom";
 
 export const useAuth = (): UseAuthReturn => {
+    const navigate = useNavigate();
     const [user, setUser] = useState<User | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    // Inicializar estado desde localStorage al montar
     useEffect(() => {
         const initializeAuth = () => {
             try {
@@ -47,22 +48,25 @@ export const useAuth = (): UseAuthReturn => {
             if (newUser) {
                 setUser(newUser);
                 setToken(response.token);
+
+                navigate('/dashboard', { replace: true });
             }
         } catch (err) {
             const apiError = err as ApiError;
             setError(apiError.message || 'Error al iniciar sesión');
-            throw err; // Re-throw para manejo en componentes
+            throw err;
         } finally {
             setIsLoading(false);
         }
-    }, []);
+    }, [navigate]);
 
     const logout = useCallback((): void => {
         authService.logout();
         setUser(null);
         setToken(null);
         setError(null);
-    }, []);
+        navigate('/login', { replace: true });
+    }, [navigate]);
 
     const clearError = useCallback((): void => {
         setError(null);

@@ -12,7 +12,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
     const handleLogout = () => {
         logout();
-        // El redirect se maneja automáticamente en AuthGuard
     };
 
     return (
@@ -25,7 +24,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
                     <nav className="layout-nav">
             <span className="layout-user">
-              Bienvenido, {user?.username}
+                Welcome, {user?.username}
             </span>
                         <Button
                             variant="outline"
@@ -33,7 +32,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                             onClick={handleLogout}
                             className="layout-logout-btn"
                         >
-                            Cerrar Sesión
+                            Log Out
                         </Button>
                     </nav>
                 </div>
@@ -47,7 +46,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             <footer className="layout-footer">
                 <div className="layout-container">
-                    <p>&copy; 2024 Bus Management System. Desarrollado para CIVA.</p>
+                    <p>&copy; 2025 Bus Management System. Developed for CIVA.</p>
                 </div>
             </footer>
         </div>

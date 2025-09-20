@@ -38,7 +38,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <div className={`pagination ${className}`}>
             <div className="pagination-info">
         <span>
-          Total: {totalItems} elemento{totalItems !== 1 ? 's' : ''}
+          Total: {totalItems} element{totalItems !== 1 ? 's' : ''}
         </span>
             </div>
 
@@ -49,7 +49,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                     onClick={() => onPageChange(currentPage - 1)}
                     disabled={currentPage === 0}
                 >
-                    Anterior
+                    Previous
                 </Button>
 
                 <div className="pagination-numbers">
@@ -71,7 +71,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                     onClick={() => onPageChange(currentPage + 1)}
                     disabled={currentPage === totalPages - 1}
                 >
-                    Siguiente
+                    Next
                 </Button>
             </div>
         </div>
